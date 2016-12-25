@@ -1,3 +1,32 @@
+
+
 <%= form_for @recipe do |f| %>
-  Title: <%= f.text_field :title %>
+  <p>Title: <%= f.text_field :title %></p>
+  <ol>
+    <%= f.fields_for :ingredients do |i| %>
+    <li>
+      Name: <%= i.text_field :name %>
+      Quantity: <%= i.text_field :quantity %>
+    </li>
+    <% end %>
+    <%= link_to 'add new ingredient', @recipe %>
+  </ol>
+  <%= f.submit %>
 <% end %>
+
+<!--  the form below is not working for no reason event though it looks formal ...
+<%= form_for @recipe do |f| %>
+  <p>Title: <%= f.text_field :title %></p>
+  <ul>
+   <%f.fields_for :ingredients do |i| %>
+  <li>
+  	Name : <%= i.text_field :name %>
+  	Quantity : <%= i.text_field :quantity%>
+  </li>
+  <%end%>
+
+  </ul>
+  <%= f.submit %>
+<% end %>
+
+-->
